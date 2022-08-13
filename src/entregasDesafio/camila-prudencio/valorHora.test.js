@@ -9,6 +9,9 @@ describe('Valor hora ', () => {
     
     expect(valorPorHora).toBe(valorPorHoraParaSalarioMilReais);
   })
+  it("Salário de 2000", () => {
+    expect(calcularValorPorHora(2000)).toBe(12)
+  })
 })
 
 describe('1 + 1', () =>{
