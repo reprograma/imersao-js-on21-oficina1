@@ -10,10 +10,6 @@ describe('Cálculo Valor Hora', () => {
   
     expect(calcularValorPorHora(1000)).toBe(6)
   })
-
-  test ('For a salary of R$2000', () => {
-    expect(calcularValorPorHora(2000)).toBe(12)
-  })
 })
 
 describe ('1 + 1', () => {
