@@ -18,7 +18,7 @@ describe("Calcular Pacote", () => {
     })
 
     test("100 horas de projeto retorna pacote_intermediario", () => {
-        horasPorProjeto.calcularHorasDeProjeto.mockReturnValueOnce(100)
+        horasPorProjeto.calcularHorasDeProjeto.mockReturnValue(100)
         const horas = calcularHorasDeProjeto()
         expect(calcularPacote(horas)).toBe("pacote_intermediario")
     })
