@@ -1,4 +1,4 @@
-const { HORAS_POR_FUNCIONALIDADE } = require('../constantes/constantes');
+const { HORAS_POR_FUNCIONALIDADE } = require('../../dominio/calculadora/constantes/constantes');
 
 const calcularHorasDeProjeto = (listaDeFuncionalidades) => (
   listaDeFuncionalidades

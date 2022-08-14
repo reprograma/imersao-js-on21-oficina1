@@ -1,6 +1,6 @@
 const { calcularPacote } = require("../../dominio/calculadora/Projeto/pacote");
 const { calcularHorasDeProjeto }= require('../../dominio/calculadora/Projeto/horasPorProjeto');
-const horasPorProjeto = require("../..//dominio/calculadora/Projeto/horasPorProjeto");
+const horasPorProjeto = require("../../dominio/calculadora/Projeto/horasPorProjeto");
 
 jest.mock("../../dominio/calculadora/Projeto/horasPorProjeto")
 
