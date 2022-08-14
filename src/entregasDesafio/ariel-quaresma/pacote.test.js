@@ -1,7 +1,7 @@
 const { calcularPacote } = require("./pacote")
 const horasPorProjeto = require("../../dominio/calculadora/Projeto/horasPorProjeto")
 
-jest.mock("../../dominio/calculadora/Projeto/horasPorProjeto")
+//jest.mock("../../dominio/calculadora/Projeto/horasPorProjeto")
 
 
 describe("Calcular o pacote desejado de acordo com quantidade de horas", () => {

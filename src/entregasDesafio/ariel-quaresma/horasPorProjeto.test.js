@@ -76,4 +76,3 @@ describe("Cálculo das funcionalidades agrupadas", () => {
     expect(horasParaTodasFuncionalidades).toBe(104)
 })
 })
-    
