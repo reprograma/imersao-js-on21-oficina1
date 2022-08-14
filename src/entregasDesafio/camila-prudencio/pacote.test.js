@@ -3,38 +3,61 @@ const { calcularHorasDeProjeto } = require('./horasPorProjeto')
 const horasPorProjeto = require('./horasPorProjeto')
 
 jest.mock('./horasPorProjeto')
-
-describe("Calcular Pacote", () => {
+describe('Pacotes...', () => {
   afterEach(() => {
     jest.clearAllMocks();
   })
-  test("Qual o pacote do projeto com todas as funcionalidades - 104h", () => {
-    const horas = 104;
+  describe("Quando for o pacote básico", () => {
+    test('Deve retornar pacote_basico', () => {
+      horasPorProjeto.calcularHorasDeProjeto.mockReturnValue(49)
 
-    expect(calcularPacote(horas)).toBe('pacote_premium');
-  })
+      const horas = calcularHorasDeProjeto()
 
-  test('Qual o pacote para 50h de projeto', () => {
-    //const funcMock = jest.mock();
+      expect(calcularPacote(horas)).toBe('pacote_basico')
+    }),
+      test('Não deve retornar pacote_basico', () => {
+        horasPorProjeto.calcularHorasDeProjeto.mockReturnValue(51)
+
+        const horas = calcularHorasDeProjeto()
+
+        expect(calcularPacote(horas)).not.toBe('pacote_basico')
+      })
+  });
+
+  describe('Quando for o pacote intermediario', () => {
+    test("Deve retornar pacote_intermediario", () => {
+
+      horasPorProjeto.calcularHorasDeProjeto.mockReturnValueOnce(99);
+
+      const horas = calcularHorasDeProjeto()
+
+      expect(calcularPacote(horas)).toBe('pacote_intermediario');
+    })
+
+  });
+
+  describe('Quando for o pacote premium', () => {
+    test("Deve retornar pacote_premium", () => {
+      horasPorProjeto.calcularHorasDeProjeto.mockReturnValue(101)
+
+      const horas = calcularHorasDeProjeto()
+
+      expect(calcularPacote(horas)).toBe('pacote_premium');
+    })
+    test("Não deve retornar pacote_premium", () => {
+        horasPorProjeto.calcularHorasDeProjeto.mockReturnValue(200)
+
+        const horas = calcularHorasDeProjeto()
+
+        expect(calcularPacote(horas)).toBe('pacote_premium');
+    })
+
+  });
+});
+
+ //const funcMock = jest.mock();
     //const jestFn = jest.fn()
     //console.log('mock =>', funcMock);
     //console.log('jestFn =>', jestFn);
     //console.log('horasPPmock', horasPorProjeto.calcularHorasDeProjeto);
     // expect(1).toBe(1)
-
-    horasPorProjeto.calcularHorasDeProjeto.mockReturnValue(50)
-    const horas = calcularHorasDeProjeto()
-    console.log('horas >>>', horas);
-
-    expect(calcularPacote(horas)).toBe('pacote_basico')
-  })
-  test("100h de projeto retorna pacote_intermediario", () => {
-
-    horasPorProjeto.calcularHorasDeProjeto.mockReturnValueOnce(100);
-
-    const horas = calcularHorasDeProjeto()
-    console.log('horas100 >>>', horas)
-
-    expect(calcularPacote(horas)).toBe('pacote_intermediario');
-  })
-})
