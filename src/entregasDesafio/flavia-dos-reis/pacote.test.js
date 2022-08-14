@@ -1,41 +1,60 @@
-const{calcularPacote} = require("../../entregasDesafio/flavia-dos-reis/pacote")
-const { calcularHorasDeProjeto } = require("../../dominio/calculadora/Projeto/horasPorProjeto")
-const horasPorProjeto = require("../../dominio/calculadora/Projeto/horasPorProjeto")
+const {
+  calcularPacote,
+} = require("../../entregasDesafio/flavia-dos-reis/pacote");
+const {
+  calcularHorasDeProjeto,
+} = require("../../dominio/calculadora/Projeto/horasPorProjeto");
+const horasPorProjeto = require("../../dominio/calculadora/Projeto/horasPorProjeto");
+const MAX_HORAS_POR_PACOTE = require("../../dominio/calculadora/constantes/constantes")
 
-jest.mock("../../dominio/calculadora/Projeto/horasPorProjeto")
-horasPorProjeto.calcularHorasDeProjeto.mockReturnValue(50)
+jest.mock("../../dominio/calculadora/Projeto/horasPorProjeto");
 
-describe("Calcular pacote", () => {
-  /* beforeEach(() => {
-    horasPorProjeto.calcularHorasDeProjeto.mockClear()
-  } ) */
+describe("Determina o tipo de pacote com base nas horas por projeto", () => {
+  test("Qual pacote do projeto com todas a funcionalidades -104h", () => {
+    const horas = 101;
 
-  test('Qual pacote do projeto com todas a funcionalidades -104h', () =>{
-    const horas = 104
-    
-    expect(calcularPacote(horas)).toBe("pacote_premium")
+    expect(calcularPacote(horas)).toBe("pacote_premium");
   });
 
-  test('Calcular pacote com 50h de projeto', () => {
-    /* const funcMock = jest.mock()
-    const jestFn = jest.fn( )
-    console.log('mock=>>>', funcMock);
-    console.log('jestFn =>>>', jestFn);
-    console.log('horasPorProjeto =>>>', horasPorProjeto.calcularHorasDeProjeto) */
+  test("Calcular pacote com 50h de projeto", () => {
+    horasPorProjeto.calcularHorasDeProjeto.mockReturnValueOnce(50);
+    const horas = calcularHorasDeProjeto();
 
-    horasPorProjeto.calcularHorasDeProjeto.mockReturnValueOnce(50)
+    expect(calcularPacote(horas)).toBe("pacote_basico");
+  });
 
-    const horas = calcularHorasDeProjeto()
-    console.log('horas =>>>', horas)
+  test("Calcular pacote com 100h de projeto", () => {
+    horasPorProjeto.calcularHorasDeProjeto.mockReturnValueOnce(100);
+    const horas = calcularHorasDeProjeto();
 
-    expect(calcularPacote(horas)).toBe("pacote_basico")
+    expect(calcularPacote(horas)).toBe("pacote_intermediario");
+  });
+
+  test("Calcular pacote com 200h de projeto", () => {
+    horasPorProjeto.calcularHorasDeProjeto.mockReturnValueOnce(200);
+    const horas = calcularHorasDeProjeto();
+
+    expect(calcularPacote(horas)).toBe("pacote_premium");
+  });
+
+  test ("Deve retornar pacote básico", () => {
+    const horas = 50
+    expect(calcularPacote(horas)).not.toBe("pacote_premium")
+  
   })
 
-  test ("100h", () => {
-    horasPorProjeto.calcularHorasDeProjeto.mockReturnValueOnce(100)
-    const horas = calcularHorasDeProjeto()
-    console.log('horas =>>>', horas)
-
-    expect(calcularPacote(horas)).toBe("pacote_intermediario")
+  test("Não pode retornar valor nulo.", () => {
+    horasPorProjeto.calcularHorasDeProjeto.mockReturnValueOnce(200);
+    const horas = calcularHorasDeProjeto();
+    expect(calcularPacote(horas)).not.toBeNull()
   })
-})
+
+ /*  test("Deve retornar o número de vezes que o pacote é calculado", () => {
+    const HPP = jest.fn();
+   horasPorProjeto.calcularHorasDeProjeto.mockReturnValueOnce(200);
+    const horas = calcularHorasDeProjeto();
+    calcularPacote(horas);
+    MAX_HORAS_POR_PACOTE(HPP,['pacote_basico','pacote_intermediario','pacote_premium']);
+    expect(HPP).toHaveBeenCalledTimes(1)
+  }) */
+});
