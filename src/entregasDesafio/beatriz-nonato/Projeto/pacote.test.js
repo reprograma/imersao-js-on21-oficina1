@@ -12,7 +12,6 @@ describe("Calcular Pacote", () => {
 
     test("Calcular pacote para 50 horas de projeto", () => {
         horasPorProjeto.calcularHorasDeProjeto.mockReturnValueOnce(50)
-        
         const horas = calcularHorasDeProjeto()
         expect(calcularPacote(horas)).toBe("pacote_basico")
     })
