@@ -3,16 +3,16 @@ const { calcularValorPorHora } = require("../../dominio/calculadora/Hora/valorHo
 
 //O describe engloba testes e descreve aquele pedaço de testes
 
-describe("Testes de teste hehe", () => {
-    test("1 + 1 não seja 0", () => {
-        expect(1 + 1).not.toBe(0)
-    })
+// describe("Testes para aprendizado", () => {
+//     test("1 + 1 não seja 0", () => {
+//         expect(1 + 1).not.toBe(0)
+//     })
 
-    test("1 + 1 igual 2", () => {
-        expect(1 + 1).toBe(2)
-    })
+//     test("1 + 1 igual 2", () => {
+//         expect(1 + 1).toBe(2)
+//     })
 
-})
+// })
 
 describe("Testes da calculadora", () => {
 
