@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\dominio",
+    "\\src\\dominio\\calculadora",
+    "\\src\\dominio\\calculadora\\constantes",
+    "\\src\\dominio\\calculadora\\Hora"
+  ],
+  "SelectedNode": "\\package.json",
+  "PreviewInSolutionExplorer": false
+}
