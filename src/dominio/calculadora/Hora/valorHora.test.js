@@ -1,12 +1,15 @@
-const {calcularValorPorHora} = require("../../dominio/calculadora/Hora/valorHora")
+const {calcularValorPorHora} = require ("../../calculadora/Hora/valorHora")
 
 describe('Cálculo Valor Hora', () => {
-  
-  
-  test ('Valor/hora para um salário de R$1000 é R$ 6/hora', ()=>{
-    /* const salário = 1000
-    const valorPorHora = calcularValorPorHora(salário)
-    const resultadoEsperado = 6 */
+  test ('Valor por hora será de R$22 para um salário de R$3872 ', () => {
+    expect(calcularValorPorHora(3872)).toBe(22)
+  })
+
+  test ('Caso a renda mensal não seja informada o valor por hora não será R$ 25', () => {
+    expect(calcularValorPorHora(0)).not.toBe(25)
+  })
+
+  test ('Valor/hora para um salário de R$1000 é R$ 6/hora', () => {
   
     expect(calcularValorPorHora(1000)).toBe(6)
   })
