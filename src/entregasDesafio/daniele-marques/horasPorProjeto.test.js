@@ -17,6 +17,6 @@ test("Um projeto com duas funcionalidade de setup e formulario ", () => {
 
 test("Um projeto com todas as funcionalidades ", () => {
   const myMock = jest.fn();
-  myMock.mockReturnValue(HORAS_POR_FUNCIONALIDADE({ total: 104 }));
-  expect(calcularHorasDeProjeto(myMock().total).toEqual(104));
+  myMock.mockReturnValue((HORAS_POR_FUNCIONALIDADE = { total: 104 }));
+  expect(calcularHorasDeProjeto(HORAS_POR_FUNCIONALIDADE.total).toEqual(104));
 });
