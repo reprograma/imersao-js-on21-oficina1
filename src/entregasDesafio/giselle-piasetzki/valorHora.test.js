@@ -8,14 +8,7 @@ describe("Cálculo Valor Hora", () => {
         expect(valorPorHora).toBe(resultadoEsperado)
     });
 
-    test("Salário de 2000", () =>{
+    test("O valor por hora de um salário de 2000 reais", () =>{
         expect(calcularValorPorHora(2000)).toBe(12)
     });
 });
-
-describe("1+1", () => {
-    test("1 + 1 é igual a 2", () => {
-        expect(1 + 1).toBe(2)
-    });
-});
-
